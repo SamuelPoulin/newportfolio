@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  website:
+    restart: always
+    build:
+      context: ./website/
+    env_file:
+      - ./website/website.env
+    volumes:
+      - ./website/public/:/usr/src/portfolio/website/public/
+      - ./website/server/:/usr/src/portfolio/website/server/
+      - ./website/src/:/usr/src/portfolio/website/src/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+
+  mongo:
+    restart: always
+    image: mongo:latest
+    volumes:
+      - ./mongo/data/db:/data/db/
+    env_file:
+      - ./mongo/mongo.env
+    ports:
+      - 27017:27017
