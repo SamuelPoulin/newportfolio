@@ -14,6 +14,19 @@ services:
     ports:
       - "3000:3000"
     depends_on:
+      - cms
+
+  cms:
+    restart: always
+    build:
+      context: ./cms/
+    env_file:
+      - ./cms/cms.env
+    volumes:
+      - ./cms/src/:/usr/src/portfolio/cms/src/
+    ports:
+      - "3001:3001"
+    depends_on:
       - mongo
 
   mongo:
@@ -23,5 +36,3 @@ services:
       - ./mongo/data/db:/data/db/
     env_file:
       - ./mongo/mongo.env
-    ports:
-      - 27017:27017
