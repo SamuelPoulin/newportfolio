@@ -5,9 +5,10 @@ WORKDIR /usr/src/portfolio/website
 COPY package.json ./
 RUN yarn
 
+COPY components ./components
+COPY pages ./pages
 COPY public ./public
 COPY server ./server
-COPY src ./src
 
 COPY app.vue ./
 COPY nuxt.config.ts ./

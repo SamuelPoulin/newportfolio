@@ -12,5 +12,10 @@
     "@types/node": "^18",
     "nuxt": "^3.5.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/three": "^0.152.1",
+    "@vueuse/core": "^10.1.2",
+    "normalize.css": "^8.0.1",
+    "three": "^0.152.2"
+  }
 }

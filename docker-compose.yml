@@ -8,11 +8,13 @@ services:
     env_file:
       - ./website/website.env
     volumes:
+      - ./website/components/:/usr/src/portfolio/website/components/
+      - ./website/pages/:/usr/src/portfolio/website/pages/
       - ./website/public/:/usr/src/portfolio/website/public/
       - ./website/server/:/usr/src/portfolio/website/server/
-      - ./website/src/:/usr/src/portfolio/website/src/
     ports:
       - "3000:3000"
+      - "24678:24678"
     depends_on:
       - cms
 
