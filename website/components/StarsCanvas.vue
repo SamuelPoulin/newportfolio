@@ -15,86 +15,75 @@
 
 <script setup lang="ts">
 import {
+  PMREMGenerator,
+  Color,
+  Light,
+  PerspectiveCamera,
+  PointLight,
   Scene,
   WebGLRenderer,
-  Color,
-  PerspectiveCamera,
-  AnimationMixer,
-  Clock,
 } from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment";
 
 import { useWindowSize } from "@vueuse/core";
 
 const starsCanvas = ref(null);
 const { width, height } = useWindowSize();
 
-let clock: Clock;
+let controls: OrbitControls;
 let camera: PerspectiveCamera;
+let cameraLight: Light;
 let scene: Scene;
 let loader: GLTFLoader;
 let dracoLoader: DRACOLoader;
-let mixers: Ref<AnimationMixer[]> = ref([]);
 let renderer: WebGLRenderer;
 
 onMounted(() => {
   if (!starsCanvas.value) return;
 
-  clock = new Clock();
-
   camera = new PerspectiveCamera(45, width.value / height.value, 1, 1000);
-  camera.position.z = 500;
+  camera.position.z = 30;
+
+  cameraLight = new PointLight(0xffffff, 1000);
+  camera.add(cameraLight);
 
   scene = new Scene();
-  scene.background = new Color(0xf0f0f0);
+  scene.background = new Color(0xffffff);
 
   loader = new GLTFLoader();
   dracoLoader = new DRACOLoader();
 
-  dracoLoader.setDecoderPath("draco/");
+  dracoLoader.setDecoderPath(
+    "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+  );
   loader.setDRACOLoader(dracoLoader);
 
-  loader.load("models/star.glb", (gltf) => {
-    const mixer = new AnimationMixer(gltf.scene);
-
-    for (let animation of gltf.animations) {
-      mixer.clipAction(animation).play();
-    }
-
-    for (let i = -5; i < 5; ++i) {
-      for (let j = -5; j < 5; ++j) {
-        const clone = gltf.scene.clone();
-
-        const cloneMixer = new AnimationMixer(clone);
-
-        for (let animation of gltf.animations) {
-          cloneMixer.clipAction(animation).play();
-        }
-
-        clone.position.x = i * 100;
-        clone.position.y = j * 100;
-
-        scene.add(clone);
-
-        mixers.value.push(cloneMixer);
-      }
-    }
+  loader.load("models/bagel.glb", (gltf) => {
+    scene.add(gltf.scene);
   });
 
   renderer = new WebGLRenderer({ canvas: starsCanvas.value, antialias: true });
   renderer.setSize(width.value, height.value);
-  renderer.render(scene, camera);
+
+  const pmremGenerator = new PMREMGenerator(renderer);
+  scene.environment = pmremGenerator.fromScene(
+    new RoomEnvironment(),
+    0.4
+  ).texture;
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.update();
 
   const animate = () => {
-    const deltaTime = clock.getDelta();
+    requestAnimationFrame(animate);
 
-    for (let mixer of mixers.value) {
-      mixer.update(deltaTime);
-    }
+    controls.update();
 
     renderer.render(scene, camera);
-    requestAnimationFrame(animate);
   };
 
   animate();
