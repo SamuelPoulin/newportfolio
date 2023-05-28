@@ -22,6 +22,7 @@ import {
   PointLight,
   Scene,
   WebGLRenderer,
+  AmbientLight,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
@@ -33,6 +34,7 @@ import { useWindowSize } from "@vueuse/core";
 const starsCanvas = ref(null);
 const { width, height } = useWindowSize();
 
+let light: Light;
 let controls: OrbitControls;
 let camera: PerspectiveCamera;
 let cameraLight: Light;
@@ -53,6 +55,9 @@ onMounted(() => {
   scene = new Scene();
   scene.background = new Color(0xffffff);
 
+  light = new AmbientLight(0xffffff, 1);
+  scene.add(light);
+
   loader = new GLTFLoader();
   dracoLoader = new DRACOLoader();
 
@@ -69,10 +74,10 @@ onMounted(() => {
   renderer.setSize(width.value, height.value);
 
   const pmremGenerator = new PMREMGenerator(renderer);
-  scene.environment = pmremGenerator.fromScene(
-    new RoomEnvironment(),
-    0.4
-  ).texture;
+  // scene.environment = pmremGenerator.fromScene(
+  //   new RoomEnvironment(),
+  //   0.4
+  // ).texture;
 
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
