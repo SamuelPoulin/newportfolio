@@ -7,8 +7,6 @@ services:
       context: ./website/
     env_file:
       - ./website/website.env
-    ports:
-      - "3000:3000"
     depends_on:
       - cms
 
@@ -20,8 +18,7 @@ services:
       - ./cms/cms.env
     volumes:
       - ./cms/media/:/usr/src/portfolio/cms/media/
-    ports:
-      - "3001:3001"
+      - ./cms/files/:/usr/src/portfolio/cms/files/
     depends_on:
       - mongo
 

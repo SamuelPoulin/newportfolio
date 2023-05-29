@@ -1,0 +1,13 @@
+FROM node:lts-alpine
+
+WORKDIR /usr/src/portfolio/cms
+
+COPY package.json ./
+RUN yarn install --production
+
+COPY src ./src
+
+COPY payload.config.ts ./
+COPY tsconfig.json ./
+
+CMD yarn build && yarn start

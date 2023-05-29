@@ -19,6 +19,11 @@ const AboutMe: GlobalConfig = {
       name: "description",
       type: "text",
     },
+    {
+      name: "resume",
+      type: "upload",
+      relationTo: "files",
+    },
   ],
 };
 

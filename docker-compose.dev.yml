@@ -11,6 +11,7 @@ services:
       - ./website/public/:/usr/src/portfolio/website/public/
       - ./website/server/:/usr/src/portfolio/website/server/
     ports:
+      - "3000:3000"
       - "24678:24678"
 
   cms:
@@ -18,3 +19,5 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./cms/src/:/usr/src/portfolio/cms/src/
+    ports:
+      - "3001:3001"

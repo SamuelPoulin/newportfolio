@@ -19,21 +19,21 @@
       <div id="landing-links">
         <a
           class="landing-link"
-          href="/files/POULIN_SAMUEL_EN_RESUME.pdf"
-          download="POULIN_SAMUEL_EN_RESUME.pdf"
+          :href="result.AboutMe.resume.url"
+          target="_blank"
           >Resume</a
         >
-        <a
+        <nuxt-link
           class="landing-link"
           href="https://linkedin.com/in/samuel-poulin"
           target="_blank"
-          >LinkedIn</a
+          >LinkedIn</nuxt-link
         >
-        <a
+        <nuxt-link
           class="landing-link"
           href="https://github.com/samuelpoulin"
           target="_blank"
-          >Github</a
+          >Github</nuxt-link
         >
       </div>
     </div>
@@ -43,8 +43,8 @@
   </div>
 
   <div id="projects-container">
+    <a id="projects" />
     <div class="section-title-container">
-      <a id="projects" />
       <h2 class="section-title"># previous work</h2>
     </div>
     <div id="projects-list">
@@ -63,19 +63,19 @@
           </div>
         </div>
         <div class="project-links">
-          <a
+          <nuxt-link
             class="project-link"
             v-if="project.url"
             :href="project.url"
             target="_blank"
-            >Visit</a
+            >Visit</nuxt-link
           >
-          <a
+          <nuxt-link
             class="project-link"
             v-if="project.githubUrl"
             :href="project.githubUrl"
             target="_blank"
-            >GitHub</a
+            >GitHub</nuxt-link
           >
         </div>
       </div>
@@ -83,8 +83,8 @@
   </div>
 
   <div id="about-container">
+    <a id="about" />
     <div class="section-title-container">
-      <a id="about" />
       <h2 class="section-title"># about me</h2>
     </div>
     <div id="about-presentation">
@@ -97,8 +97,8 @@
   </div>
 
   <div id="skills-container">
+    <a id="skills" />
     <div class="section-title-container">
-      <a id="skills" />
       <h2 class="section-title"># things I picked up along the way</h2>
     </div>
     <div id="skills-list">
@@ -107,7 +107,7 @@
           <nuxt-img :src="skill.logo.url" />
           <div class="skill-name">{{ skill.name }}</div>
         </div>
-        <div class="skill-experience">Expecience: ~{{ skill.experience }}</div>
+        <div class="skill-experience">Experience: ~{{ skill.experience }}</div>
       </div>
     </div>
   </div>
@@ -210,6 +210,7 @@
   flex-direction: column;
 
   padding-top: 175px;
+  gap: 10px;
 }
 
 #projects-list {
@@ -394,6 +395,9 @@ const LandingPageQuery = gql`
       }
       opener
       description
+      resume {
+        url
+      }
     }
     Skills {
       docs {

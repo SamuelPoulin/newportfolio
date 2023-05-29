@@ -1,6 +1,6 @@
 <template>
   <div id="header-container">
-    <a id="logo-link" href="/">SP</a>
+    <nuxt-link id="logo-link" href="/">SP</nuxt-link>
     <div id="header-alert-container">
       <div class="header-alert-emoji">
         {{ result.HeaderAlert.emojiLeft }}
@@ -17,8 +17,8 @@
       <NuxtLink class="header-link" to="#about">about</NuxtLink>
       <NuxtLink class="header-link" to="#skills">skills</NuxtLink>
     </div>
-    <a class="header-link" href="mailto:samuel-poulin@outlook.com"
-      >contact me</a
+    <nuxt-link class="header-link" href="mailto:samuel-poulin@outlook.com"
+      >contact me</nuxt-link
     >
   </div>
 </template>

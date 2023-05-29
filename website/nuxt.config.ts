@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+const isProduction = process.env.NODE_ENV === "production";
+
 export default defineNuxtConfig({
   typescript: {
     shim: false,
@@ -13,7 +14,10 @@ export default defineNuxtConfig({
     clients: {
       default: {
         httpEndpoint: "http://cms:3001/api/graphql",
-        browserHttpEndpoint: "http://localhost:3001/api/graphql",
+        browserHttpEndpoint: isProduction
+          ? // ? "https://samuelpoulin.ca/api/graphql"
+            "http://localhost:3011/api/graphql"
+          : "http://localhost:3001/api/graphql",
       },
     },
   },
