@@ -76,6 +76,15 @@
   font-weight: 700;
   font-size: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+  #footer-container {
+    flex-direction: column-reverse;
+    height: unset;
+    gap: 20px;
+    padding: 50px 0px;
+  }
+}
 </style>
 
 <script setup lang="ts">

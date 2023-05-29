@@ -15,8 +15,7 @@ export default defineNuxtConfig({
       default: {
         httpEndpoint: "http://cms:3001/api/graphql",
         browserHttpEndpoint: isProduction
-          ? // ? "https://samuelpoulin.ca/api/graphql"
-            "http://localhost:3011/api/graphql"
+          ? "https://samuelpoulin.ca/api/graphql"
           : "http://localhost:3001/api/graphql",
       },
     },

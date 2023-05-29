@@ -12,7 +12,7 @@
             <button id="landing-button" v-on:click="showBagel = !showBagel">
               {{ showBagel ? "the city of bagels" : "Montréal" }}
             </button>
-            <MontrealLogo />
+            <MontrealLogo id="landing-city-logo" />
           </div>
         </div>
       </div>
@@ -37,8 +37,8 @@
         >
       </div>
     </div>
-    <div id="landing-bagel-container">
-      <BagelCanvas v-if="showBagel" />
+    <div id="landing-bagel-container" v-if="showBagel && breakpoints.xl.value">
+      <BagelCanvas />
     </div>
   </div>
 
@@ -104,7 +104,7 @@
     <div id="skills-list">
       <div class="skill-container" v-for="skill of result.Skills.docs">
         <div class="skill-informations">
-          <nuxt-img :src="skill.logo.url" />
+          <nuxt-img class="skill-logo" :src="skill.logo.url" />
           <div class="skill-name">{{ skill.name }}</div>
         </div>
         <div class="skill-experience">Experience: ~{{ skill.experience }}</div>
@@ -217,6 +217,9 @@
   display: flex;
 
   gap: 50px;
+  padding-bottom: 25px;
+
+  overflow-x: scroll;
 }
 
 .project-container {
@@ -250,6 +253,8 @@
 
 .project-picture {
   border-radius: 10px;
+
+  width: 300px;
 }
 
 .project-name {
@@ -283,6 +288,7 @@
 
 #about-picture {
   width: 350px;
+  object-fit: cover;
 
   border-radius: 10px;
 }
@@ -353,10 +359,245 @@
   font-weight: 400;
   font-size: 20px;
 }
+
+/* 2xl */
+@media only screen and (max-width: 1536px) {
+  #landing-infos-container {
+    padding-top: 50px;
+
+    gap: 200px;
+  }
+
+  #landing-city-container {
+    gap: 5px;
+  }
+
+  #landing-name {
+    font-size: 84px;
+  }
+
+  .landing-description,
+  #landing-button {
+    font-size: 30px;
+  }
+
+  #landing-city {
+    gap: 5px;
+  }
+
+  #landing-city-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  #about-opener,
+  #about-description {
+    font-size: 30px;
+  }
+
+  #about-presentation {
+    gap: 100px;
+  }
+}
+
+/* @media only screen and (max-width: 1280px) {
+  #about-presentation {
+    flex-direction: column;
+
+    gap: 50px;
+  }
+} */
+
+/* lg */
+@media only screen and (max-width: 1024px) {
+  #landing-infos-container {
+    padding-top: 25px;
+
+    gap: 225px;
+  }
+
+  #landing-city-container {
+    gap: 5px;
+  }
+
+  #landing-name {
+    font-size: 56px;
+  }
+
+  .landing-description,
+  #landing-button {
+    font-size: 30px;
+  }
+
+  #landing-city {
+    gap: 5px;
+  }
+
+  #landing-city-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  #about-descriptions-container {
+    gap: 15px;
+  }
+
+  #about-opener,
+  #about-description {
+    font-size: 30px;
+  }
+
+  #about-presentation {
+    flex-direction: column;
+
+    gap: 50px;
+    padding-right: unset;
+  }
+
+  .skill-container {
+    padding: 15px;
+  }
+
+  .skill-name {
+    font-size: 24px;
+  }
+
+  .skill-experience {
+    font-size: 16px;
+  }
+
+  .skill-logo {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* md */
+@media only screen and (max-width: 768px) {
+  #landing-infos-container {
+    padding-top: 15px;
+
+    gap: 350px;
+  }
+
+  #landing-city-container {
+    gap: 3px;
+  }
+
+  #landing-name {
+    font-size: 46px;
+  }
+
+  .landing-description,
+  #landing-button {
+    font-size: 24px;
+  }
+
+  #landing-city {
+    gap: 3px;
+  }
+
+  #landing-city-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .section-title-container {
+    height: 75px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  #projects-container {
+    padding-top: 25px;
+  }
+
+  #projects-list {
+    flex-direction: column;
+    overflow-x: auto;
+  }
+
+  .project-container {
+    width: unset;
+  }
+
+  .project-name,
+  .project-description {
+    text-align: justify;
+  }
+
+  #about-container {
+    padding-top: 25px;
+  }
+
+  #skills-container {
+    padding: 25px 0px;
+  }
+
+  #about-opener,
+  #about-description {
+    font-size: 20px;
+  }
+
+  #about-presentation {
+    gap: 25px;
+  }
+}
+
+/* sm */
+@media only screen and (max-width: 640px) {
+  #landing-infos-container {
+    padding-top: 0px;
+
+    gap: 350px;
+  }
+
+  #landing-city-container {
+    gap: 0px;
+  }
+
+  #landing-name {
+    font-size: 35px;
+  }
+
+  .landing-description,
+  #landing-button {
+    font-size: 20px;
+  }
+
+  #landing-city {
+    gap: 0px;
+  }
+
+  #landing-city-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .section-title-container {
+    height: 50px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  #projects-container {
+    padding-top: 25px;
+  }
+
+  .skill-container {
+    align-items: center;
+    flex-grow: 1;
+  }
+}
 </style>
 
 <script setup lang="ts">
 import MontrealLogo from "~/components/shared/MontrealLogo.vue";
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
 useHead({
   title: "Samuel Poulin",
@@ -412,4 +653,6 @@ const LandingPageQuery = gql`
 `;
 
 const { result } = useQuery(LandingPageQuery);
+
+const breakpoints = useBreakpoints(breakpointsTailwind);
 </script>

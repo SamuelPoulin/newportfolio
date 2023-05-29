@@ -13,8 +13,7 @@ import LandingPageDescription from "./src/globals/LandingPageDescription";
 const isProduction = process.env.NODE_ENV === "production";
 
 export default buildConfig({
-  // serverURL: isProduction ? "https://samuelpoulin.ca" : "http://localhost:3001",
-  serverURL: isProduction ? "http://localhost:3011" : "http://localhost:3001",
+  serverURL: isProduction ? "https://samuelpoulin.ca" : "http://localhost:3001",
   admin: {
     user: Users.slug,
   },
