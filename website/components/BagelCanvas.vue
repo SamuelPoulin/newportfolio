@@ -68,10 +68,11 @@ onMounted(() => {
     antialias: true,
     alpha: true,
   });
-  renderer.setSize(500, 500);
+  renderer.setSize(440, 440);
 
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
+  controls.enableZoom = false;
   controls.update();
 
   const animate = () => {
