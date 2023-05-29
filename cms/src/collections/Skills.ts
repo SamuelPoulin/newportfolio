@@ -22,6 +22,11 @@ const Skills: CollectionConfig = {
       name: "experience",
       type: "text",
     },
+    {
+      name: "showcase",
+      type: "checkbox",
+      defaultValue: true,
+    },
   ],
 };
 

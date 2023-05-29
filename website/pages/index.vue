@@ -640,7 +640,7 @@ const LandingPageQuery = gql`
         url
       }
     }
-    Skills(limit: 100) {
+    Skills(limit: 100, where: { showcase: { equals: true } }) {
       docs {
         name
         experience
