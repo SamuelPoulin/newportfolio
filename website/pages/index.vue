@@ -87,12 +87,28 @@
       <a id="about" />
       <h2 class="section-title"># about me</h2>
     </div>
+    <div id="about-presentation">
+      <nuxt-img id="about-picture" :src="result.AboutMe.picture.url"></nuxt-img>
+      <div id="about-descriptions-container">
+        <div id="about-opener">{{ result.AboutMe.opener }}</div>
+        <div id="about-description">{{ result.AboutMe.description }}</div>
+      </div>
+    </div>
   </div>
 
   <div id="skills-container">
     <div class="section-title-container">
       <a id="skills" />
       <h2 class="section-title"># things I picked up along the way</h2>
+    </div>
+    <div id="skills-list">
+      <div class="skill-container" v-for="skill of result.Skills.docs">
+        <div class="skill-informations">
+          <nuxt-img :src="skill.logo.url" />
+          <div class="skill-name">{{ skill.name }}</div>
+        </div>
+        <div class="skill-experience">Expecience: ~{{ skill.experience }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -181,6 +197,8 @@
 }
 
 .section-title {
+  margin: 0;
+
   user-select: none;
   font-family: Inter;
   font-weight: 500;
@@ -229,6 +247,10 @@
   font-size: 20px;
 }
 
+.project-picture {
+  border-radius: 10px;
+}
+
 .project-name {
   margin: 0;
 
@@ -245,14 +267,90 @@
 
 #about-container {
   display: flex;
+  flex-direction: column;
 
   padding-top: 100px;
+  gap: 10px;
+}
+
+#about-presentation {
+  display: flex;
+
+  gap: 150px;
+  padding-right: 150px;
+}
+
+#about-picture {
+  width: 350px;
+
+  border-radius: 10px;
+}
+
+#about-descriptions-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 50px;
+}
+
+#about-opener {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 40px;
+}
+
+#about-description {
+  text-align: justify;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 40px;
 }
 
 #skills-container {
   display: flex;
+  flex-direction: column;
 
-  padding-top: 100px;
+  padding: 100px 0px;
+  gap: 10px;
+}
+
+#skills-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.skill-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+  padding: 25px;
+
+  border-radius: 10px;
+  background-color: #ececec;
+}
+
+.skill-informations {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.skill-name {
+  user-select: none;
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 32px;
+}
+
+.skill-experience {
+  user-select: none;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 20px;
 }
 </style>
 
@@ -287,6 +385,22 @@ const LandingPageQuery = gql`
         url
         skills {
           name
+        }
+      }
+    }
+    AboutMe {
+      picture {
+        url
+      }
+      opener
+      description
+    }
+    Skills {
+      docs {
+        name
+        experience
+        logo {
+          url
         }
       }
     }

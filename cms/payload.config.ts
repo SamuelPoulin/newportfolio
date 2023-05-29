@@ -5,6 +5,7 @@ import Media from "./src/collections/Media";
 import Projects from "./src/collections/Projects";
 import Skills from "./src/collections/Skills";
 import Users from "./src/collections/Users";
+import AboutMe from "./src/globals/AboutMe";
 import HeaderAlert from "./src/globals/HeaderAlert";
 import LandingPageDescription from "./src/globals/LandingPageDescription";
 
@@ -14,7 +15,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Projects, Skills],
-  globals: [HeaderAlert, LandingPageDescription],
+  globals: [HeaderAlert, LandingPageDescription, AboutMe],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
