@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/image-edge": "^1.0.0-28088649.74a91bd",
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/google-fonts": "^3.0.0-1",
     "@types/node": "^18",

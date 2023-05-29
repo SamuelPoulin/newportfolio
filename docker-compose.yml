@@ -27,6 +27,7 @@ services:
       - ./cms/cms.env
     volumes:
       - ./cms/src/:/usr/src/portfolio/cms/src/
+      - ./cms/media/:/usr/src/portfolio/cms/media/
     ports:
       - "3001:3001"
     depends_on:

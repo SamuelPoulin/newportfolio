@@ -29,8 +29,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-import { useWindowSize } from "@vueuse/core";
-
 const bagelCanvas = ref(null);
 let shouldLerp = ref(true);
 
@@ -81,13 +79,13 @@ onMounted(() => {
 
     controls.update();
 
-    if (Math.floor(camera.position.z) === 30) {
+    if (Math.floor(camera.position.z) === 25) {
       shouldLerp.value = false;
     }
 
     if (shouldLerp.value) {
       camera.position.lerp(
-        new Vector3(camera.position.x, camera.position.y, 30),
+        new Vector3(camera.position.x, camera.position.y, 15),
         0.1
       );
     }

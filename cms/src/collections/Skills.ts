@@ -2,6 +2,12 @@ import { CollectionConfig } from "payload/types";
 
 const Skills: CollectionConfig = {
   slug: "skills",
+  admin: {
+    useAsTitle: "name",
+  },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: "name",
@@ -9,7 +15,8 @@ const Skills: CollectionConfig = {
     },
     {
       name: "logo",
-      type: "text",
+      type: "upload",
+      relationTo: "media",
     },
     {
       name: "experience",

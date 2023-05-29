@@ -44,6 +44,7 @@
 
   gap: 10px;
 
+  user-select: none;
   font-family: Inter;
   font-weight: 400;
   font-size: 20px;
@@ -70,9 +71,10 @@
 }
 
 #footer-copyright {
-    font-family: Inter;
-    font-weight: 700;
-    font-size: 20px;
+  user-select: none;
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 20px;
 }
 </style>
 

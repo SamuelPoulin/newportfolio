@@ -1,6 +1,6 @@
 <template>
   <div id="header-container">
-    <a id="logo-link" href="/"> SP </a>
+    <a id="logo-link" href="/">SP</a>
     <div id="header-alert-container">
       <div class="header-alert-emoji">
         {{ result.HeaderAlert.emojiLeft }}
@@ -13,9 +13,9 @@
       </div>
     </div>
     <div id="header-links-container">
-      <a class="header-link" href="/#projects">projects</a>
-      <a class="header-link" href="/#about">about</a>
-      <a class="header-link" href="/#skills">skills</a>
+      <NuxtLink class="header-link" to="#projects">projects</NuxtLink>
+      <NuxtLink class="header-link" to="#about">about</NuxtLink>
+      <NuxtLink class="header-link" to="#skills">skills</NuxtLink>
     </div>
     <a class="header-link" href="mailto:samuel-poulin@outlook.com"
       >contact me</a
@@ -46,9 +46,14 @@
   align-items: center;
 
   gap: 10px;
+
+  user-select: none;
 }
 
 .header-alert-emoji {
+  display: flex;
+  align-items: center;
+
   font-size: 32px;
 }
 

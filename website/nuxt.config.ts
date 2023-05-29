@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  modules: ["@nuxtjs/google-fonts", "@nuxtjs/apollo"],
+  modules: ["@nuxtjs/google-fonts", "@nuxt/image-edge", "@nuxtjs/apollo"],
   googleFonts: {
     families: {
       Inter: [400, 500, 700],
