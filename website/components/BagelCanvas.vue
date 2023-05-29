@@ -1,15 +1,17 @@
 <template>
   <div>
-    <canvas ref="starsCanvas" id="stars-canvas" />
+    <canvas ref="bagelCanvas" id="bagel-canvas" />
   </div>
 </template>
 
 <style>
-#stars-canvas {
+#bagel-canvas {
   display: flex;
 
   width: 100vw;
   height: 100vh;
+
+  cursor: pointer;
 }
 </style>
 
@@ -21,6 +23,7 @@ import {
   Scene,
   WebGLRenderer,
   AmbientLight,
+  Vector3,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
@@ -28,7 +31,8 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 import { useWindowSize } from "@vueuse/core";
 
-const starsCanvas = ref(null);
+const bagelCanvas = ref(null);
+let shouldLerp = ref(true);
 
 let light: Light;
 let controls: OrbitControls;
@@ -39,10 +43,10 @@ let dracoLoader: DRACOLoader;
 let renderer: WebGLRenderer;
 
 onMounted(() => {
-  if (!starsCanvas.value) return;
+  if (!bagelCanvas.value) return;
 
   camera = new PerspectiveCamera(45, 1, 1, 1000);
-  camera.position.z = 30;
+  camera.position.z = 1000;
 
   scene = new Scene();
 
@@ -61,7 +65,11 @@ onMounted(() => {
     scene.add(gltf.scene);
   });
 
-  renderer = new WebGLRenderer({ canvas: starsCanvas.value, antialias: true, alpha: true });
+  renderer = new WebGLRenderer({
+    canvas: bagelCanvas.value,
+    antialias: true,
+    alpha: true,
+  });
   renderer.setSize(500, 500);
 
   controls = new OrbitControls(camera, renderer.domElement);
@@ -72,6 +80,17 @@ onMounted(() => {
     requestAnimationFrame(animate);
 
     controls.update();
+
+    if (Math.floor(camera.position.z) === 30) {
+      shouldLerp.value = false;
+    }
+
+    if (shouldLerp.value) {
+      camera.position.lerp(
+        new Vector3(camera.position.x, camera.position.y, 30),
+        0.1
+      );
+    }
 
     renderer.render(scene, camera);
   };
