@@ -58,7 +58,7 @@
           <div class="project-description">
             <span>Built with </span>
             <span>
-              {{ project.skills.map((skill) => skill.name).join(", ") }}.
+              {{ project.skills.map((skill: any) => skill.name).join(", ") }}.
             </span>
           </div>
         </div>
