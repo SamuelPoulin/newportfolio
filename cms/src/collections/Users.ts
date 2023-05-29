@@ -2,7 +2,10 @@ import { CollectionConfig } from "payload/types";
 
 const Users: CollectionConfig = {
   slug: "users",
-  auth: true,
+  auth: {
+    maxLoginAttempts: 10,
+    lockTime: 3600000,
+  },
   admin: {
     useAsTitle: "email",
   },

@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  website:
+    build:
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./website/layouts/:/usr/src/portfolio/website/layouts/
+      - ./website/components/:/usr/src/portfolio/website/components/
+      - ./website/pages/:/usr/src/portfolio/website/pages/
+      - ./website/public/:/usr/src/portfolio/website/public/
+      - ./website/server/:/usr/src/portfolio/website/server/
+    ports:
+      - "24678:24678"
+
+  cms:
+    build:
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./cms/src/:/usr/src/portfolio/cms/src/

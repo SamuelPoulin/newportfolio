@@ -7,15 +7,8 @@ services:
       context: ./website/
     env_file:
       - ./website/website.env
-    volumes:
-      - ./website/layouts/:/usr/src/portfolio/website/layouts/
-      - ./website/components/:/usr/src/portfolio/website/components/
-      - ./website/pages/:/usr/src/portfolio/website/pages/
-      - ./website/public/:/usr/src/portfolio/website/public/
-      - ./website/server/:/usr/src/portfolio/website/server/
     ports:
       - "3000:3000"
-      - "24678:24678"
     depends_on:
       - cms
 
@@ -26,7 +19,6 @@ services:
     env_file:
       - ./cms/cms.env
     volumes:
-      - ./cms/src/:/usr/src/portfolio/cms/src/
       - ./cms/media/:/usr/src/portfolio/cms/media/
     ports:
       - "3001:3001"
