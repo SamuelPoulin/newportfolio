@@ -28,22 +28,8 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
-}
 
-/* 2xl */
-@media only screen and (max-width: 1536px) {
-}
-
-/* xl */
-@media only screen and (max-width: 1280px) {
-}
-
-/* lg */
-@media only screen and (max-width: 1024px) {
-}
-
-/* md */
-@media only screen and (max-width: 768px) {
+  background-color: #ffffff;
 }
 
 /* sm */

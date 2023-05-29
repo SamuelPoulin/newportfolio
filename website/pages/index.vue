@@ -616,7 +616,7 @@ const LandingPageQuery = gql`
     LandingPageDescription {
       description
     }
-    Projects {
+    Projects(sort: "rank") {
       docs {
         name
         description

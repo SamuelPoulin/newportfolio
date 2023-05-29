@@ -36,6 +36,11 @@ const Projects: CollectionConfig = {
       relationTo: "skills",
       hasMany: true,
     },
+    {
+      name: "rank",
+      type: "number",
+      unique: true,
+    },
   ],
 };
 
