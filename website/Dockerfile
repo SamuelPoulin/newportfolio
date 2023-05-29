@@ -5,6 +5,7 @@ WORKDIR /usr/src/portfolio/website
 COPY package.json ./
 RUN yarn
 
+COPY layouts ./layouts
 COPY components ./components
 COPY pages ./pages
 COPY public ./public

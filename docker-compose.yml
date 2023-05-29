@@ -8,6 +8,7 @@ services:
     env_file:
       - ./website/website.env
     volumes:
+      - ./website/layouts/:/usr/src/portfolio/website/layouts/
       - ./website/components/:/usr/src/portfolio/website/components/
       - ./website/pages/:/usr/src/portfolio/website/pages/
       - ./website/public/:/usr/src/portfolio/website/public/

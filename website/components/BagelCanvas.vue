@@ -29,7 +29,6 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useWindowSize } from "@vueuse/core";
 
 const starsCanvas = ref(null);
-const { width, height } = useWindowSize();
 
 let light: Light;
 let controls: OrbitControls;
@@ -42,11 +41,10 @@ let renderer: WebGLRenderer;
 onMounted(() => {
   if (!starsCanvas.value) return;
 
-  camera = new PerspectiveCamera(45, width.value / height.value, 1, 1000);
+  camera = new PerspectiveCamera(45, 1, 1, 1000);
   camera.position.z = 30;
 
   scene = new Scene();
-  scene.background = new Color(0xf0f0f0);
 
   light = new AmbientLight(0xffffff, 1);
   scene.add(light);
@@ -63,8 +61,8 @@ onMounted(() => {
     scene.add(gltf.scene);
   });
 
-  renderer = new WebGLRenderer({ canvas: starsCanvas.value, antialias: true });
-  renderer.setSize(width.value, height.value);
+  renderer = new WebGLRenderer({ canvas: starsCanvas.value, antialias: true, alpha: true });
+  renderer.setSize(500, 500);
 
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;

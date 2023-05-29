@@ -1,5 +1,5 @@
 <template>
-  <StarsCanvas />
+  <BagelCanvas />
 
   <div v-for="post in data.posts">
     <div>{{ post.title }}</div>
@@ -8,11 +8,10 @@
 </template>
 
 <script setup lang="ts">
-import StarsCanvas from "~/components/StarsCanvas.vue";
 
 useHead({
   title: "Samuel Poulin",
-  meta: [{ name: "description", content: "B. Eng. in Software Engineering." }],
+  meta: [{ name: "description", content: "Software Engineering graduate based in Montréal." }],
 });
 
 const data = {
