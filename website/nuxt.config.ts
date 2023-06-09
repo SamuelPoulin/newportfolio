@@ -6,8 +6,11 @@ export default defineNuxtConfig({
   },
   modules: ["@nuxtjs/google-fonts", "@nuxt/image-edge", "@nuxtjs/apollo"],
   googleFonts: {
+    preload: true,
     families: {
-      Inter: [400, 500, 700],
+      Inter: {
+        wght: [400, 500, 700],
+      },
     },
   },
   apollo: {
