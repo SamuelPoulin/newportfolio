@@ -307,7 +307,6 @@
 }
 
 #about-description {
-  text-align: justify;
   font-family: Inter;
   font-weight: 400;
   font-size: 40px;
@@ -521,11 +520,6 @@
 
   .project-container {
     width: unset;
-  }
-
-  .project-name,
-  .project-description {
-    text-align: justify;
   }
 
   #about-container {
