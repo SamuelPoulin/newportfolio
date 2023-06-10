@@ -1,6 +1,9 @@
 const isProduction = process.env.NODE_ENV === "production";
 
 export default defineNuxtConfig({
+  build: {
+    transpile: ["tslib"],
+  },
   typescript: {
     shim: false,
   },
