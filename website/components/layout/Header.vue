@@ -1,7 +1,7 @@
 <template>
   <div id="header-container">
     <nuxt-link id="logo-link" href="/">SP</nuxt-link>
-    <div id="header-alert-container" v-if="breakpoints.lg.value">
+    <div id="header-alert-container">
       <div class="header-alert-emoji">
         {{ result.HeaderAlert.emojiLeft }}
       </div>
@@ -19,7 +19,7 @@
     </div>
     <nuxt-link
       class="header-link"
-      v-if="breakpoints.sm.value"
+      id="header-contact-link"
       href="mailto:samuel-poulin@outlook.com"
       >contact me</nuxt-link
     >
@@ -84,6 +84,10 @@
   #header-links-container {
     gap: 25px;
   }
+
+  #header-alert-container {
+    display: none;
+  }
 }
 
 /* sm */
@@ -91,12 +95,14 @@
   #header-links-container {
     gap: 10px;
   }
+
+  #header-contact-link {
+    display: none;
+  }
 }
 </style>
 
 <script setup lang="ts">
-import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
-
 const HeaderQuery = gql`
   query {
     HeaderAlert {
@@ -108,6 +114,4 @@ const HeaderQuery = gql`
 `;
 
 const { result } = useQuery(HeaderQuery);
-
-const breakpoints = useBreakpoints(breakpointsTailwind);
 </script>

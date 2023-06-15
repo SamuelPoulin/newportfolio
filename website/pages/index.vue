@@ -37,7 +37,7 @@
         >
       </div>
     </div>
-    <div id="landing-bagel-container" v-if="showBagel && breakpoints.xl.value">
+    <div id="landing-bagel-container" v-if="showBagel">
       <BagelCanvas />
     </div>
   </div>
@@ -399,13 +399,11 @@
   }
 }
 
-/* @media only screen and (max-width: 1280px) {
-  #about-presentation {
-    flex-direction: column;
-
-    gap: 50px;
+@media only screen and (max-width: 1280px) {
+  #landing-bagel-container {
+    display: none;
   }
-} */
+}
 
 /* lg */
 @media only screen and (max-width: 1024px) {
@@ -591,7 +589,6 @@
 
 <script setup lang="ts">
 import MontrealLogo from "~/components/shared/MontrealLogo.vue";
-import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
 useHead({
   title: "Samuel Poulin",
@@ -647,6 +644,4 @@ const LandingPageQuery = gql`
 `;
 
 const { result } = useQuery(LandingPageQuery);
-
-const breakpoints = useBreakpoints(breakpointsTailwind);
 </script>
