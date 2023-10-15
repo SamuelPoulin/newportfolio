@@ -16,6 +16,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  nitro: {
+    compressPublicAssets: true,
+  },
   apollo: {
     clients: {
       default: {

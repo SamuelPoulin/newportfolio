@@ -49,7 +49,12 @@
     </div>
     <div id="projects-list">
       <div class="project-container" v-for="project of result.Projects.docs">
-        <nuxt-img class="project-picture" :src="project.picture.url" />
+        <nuxt-img
+          class="project-picture"
+          :src="project.picture.url"
+          :alt="project.picture.alt"
+          format="webp"
+        />
         <div class="project-informations">
           <h3 class="project-name">
             {{ project.name }}
@@ -88,7 +93,12 @@
       <h2 class="section-title"># about me</h2>
     </div>
     <div id="about-presentation">
-      <nuxt-img id="about-picture" :src="result.AboutMe.picture.url"></nuxt-img>
+      <nuxt-img
+        id="about-picture"
+        :src="result.AboutMe.picture.url"
+        :alt="result.AboutMe.picture.alt"
+        format="webp"
+      ></nuxt-img>
       <div id="about-descriptions-container">
         <div id="about-opener">{{ result.AboutMe.opener }}</div>
         <div id="about-description">{{ result.AboutMe.description }}</div>
@@ -104,7 +114,12 @@
     <div id="skills-list">
       <div class="skill-container" v-for="skill of result.Skills.docs">
         <div class="skill-informations">
-          <nuxt-img class="skill-logo" :src="skill.logo.url" />
+          <nuxt-img
+            class="skill-logo"
+            :src="skill.logo.url"
+            :alt="skill.logo.alt"
+            format="webp"
+          />
           <div class="skill-name">{{ skill.name }}</div>
         </div>
         <div class="skill-experience">Experience: ~{{ skill.experience }}</div>
@@ -598,6 +613,9 @@ useHead({
       content: "Software Engineering graduate based in Montréal.",
     },
   ],
+  htmlAttrs: {
+    lang: "en",
+  },
 });
 
 const showBagel = ref(false);
@@ -613,6 +631,7 @@ const LandingPageQuery = gql`
         description
         picture {
           url
+          alt
         }
         githubUrl
         url
@@ -624,6 +643,7 @@ const LandingPageQuery = gql`
     AboutMe {
       picture {
         url
+        alt
       }
       opener
       description
@@ -637,6 +657,7 @@ const LandingPageQuery = gql`
         experience
         logo {
           url
+          alt
         }
       }
     }
