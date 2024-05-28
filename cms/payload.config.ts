@@ -14,8 +14,6 @@ import AboutMe from "./src/globals/AboutMe";
 import HeaderAlert from "./src/globals/HeaderAlert";
 import LandingPageDescription from "./src/globals/LandingPageDescription";
 
-const isProduction = process.env.NODE_ENV === "production";
-
 const mongoUsername = process.env.MONGO_USERNAME;
 const mongoPassword = process.env.MONGO_PASSWORD;
 const mongoDatabase = process.env.MONGO_DATABASE;
@@ -23,7 +21,7 @@ const mongoDatabase = process.env.MONGO_DATABASE;
 const mongoURL = `mongodb://${mongoUsername}:${mongoPassword}@mongo/${mongoDatabase}`;
 
 export default buildConfig({
-  serverURL: isProduction ? "https://samuelpoulin.ca" : "http://localhost:3001",
+  serverURL: "https://samuelpoulin.ca",
   admin: {
     bundler: viteBundler(),
     user: Users.slug,
