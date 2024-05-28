@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  modules: ["@nuxtjs/google-fonts", "@nuxt/image-edge", "@nuxtjs/apollo"],
+  modules: ["@nuxtjs/google-fonts", "@nuxt/image", "@nuxtjs/apollo"],
   googleFonts: {
     preload: true,
     families: {
