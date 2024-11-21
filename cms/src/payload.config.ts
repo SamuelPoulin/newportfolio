@@ -26,6 +26,7 @@ const mongoURL = `mongodb://${mongoUsername}:${mongoPassword}@mongo/${mongoDatab
 const payloadSecret = process.env.PAYLOAD_SECRET || '';
 
 export default buildConfig({
+  serverURL: "https://samuelpoulin.ca",
   admin: {
     user: Users.slug,
     importMap: {
