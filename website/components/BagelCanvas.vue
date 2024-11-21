@@ -25,9 +25,9 @@ import {
   AmbientLight,
   Vector3,
 } from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const bagelCanvas = ref(null);
 let shouldLerp = ref(true);
