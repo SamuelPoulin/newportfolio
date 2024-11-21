@@ -1,4 +1,4 @@
-import { GlobalConfig } from "payload/types";
+import { GlobalConfig } from "payload";
 
 const AboutMe: GlobalConfig = {
   slug: "about-me",

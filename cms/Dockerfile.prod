@@ -2,12 +2,11 @@ FROM node:lts-alpine
 
 WORKDIR /usr/src/portfolio/cms
 
-COPY package.json ./
+RUN apk add --no-cache libc6-compat
+
+COPY package.json yarn.lock* ./
 RUN yarn install --production
 
-COPY src ./src
-
-COPY payload.config.ts ./
-COPY tsconfig.json ./
+COPY . .
 
 CMD yarn build && yarn start

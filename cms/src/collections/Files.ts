@@ -1,4 +1,4 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 
 const Files: CollectionConfig = {
   slug: "files",
@@ -6,7 +6,6 @@ const Files: CollectionConfig = {
     read: () => true,
   },
   upload: {
-    staticURL: "/files",
     staticDir: "files",
     mimeTypes: ["*"],
   },
