@@ -18,6 +18,7 @@
       </div>
       <div id="landing-links">
         <a
+          v-if="result.AboutMe.resume"
           class="landing-link"
           :href="result.AboutMe.resume.url"
           target="_blank"
@@ -42,7 +43,7 @@
     </div>
   </div>
 
-  <div id="projects-container">
+  <div id="projects-container" v-if="result?.Projects">
     <a id="projects" />
     <div class="section-title-container">
       <h2 class="section-title"># previous work</h2>
@@ -94,6 +95,7 @@
     </div>
     <div id="about-presentation">
       <nuxt-img
+        v-if="result.AboutMe.picture"
         id="about-picture"
         :src="result.AboutMe.picture.url"
         :alt="result.AboutMe.picture.alt"

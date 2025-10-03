@@ -15,6 +15,8 @@ import HeaderAlert from './globals/HeaderAlert'
 import LandingPageDescription from './globals/LandingPageDescription'
 import AboutMe from './globals/AboutMe'
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -26,7 +28,7 @@ const mongoURL = `mongodb://${mongoUsername}:${mongoPassword}@mongo/${mongoDatab
 const payloadSecret = process.env.PAYLOAD_SECRET || '';
 
 export default buildConfig({
-  serverURL: "https://samuelpoulin.ca",
+  serverURL: isProduction ? "https://samuelpoulin.ca" : "http://localhost:3001",
   admin: {
     user: Users.slug,
     importMap: {

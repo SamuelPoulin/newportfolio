@@ -9,16 +9,16 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@types/node": "^22.9.1",
-    "@types/three": "^0.170.0"
+    "@types/node": "^24.6.2",
+    "@types/three": "^0.180.0"
   },
   "dependencies": {
-    "@nuxt/image": "^1.7.0",
+    "@nuxt/image": "^1.11.0",
     "@nuxtjs/apollo": "^5.0.0-alpha.14",
     "@nuxtjs/google-fonts": "^3.2.0",
-    "@vueuse/core": "^11.2.0",
+    "@vueuse/core": "^13.9.0",
     "normalize.css": "^8.0.1",
-    "nuxt": "^3.14.1592",
-    "three": "^0.170.0"
+    "nuxt": "^4.1.2",
+    "three": "^0.180.0"
   }
 }
